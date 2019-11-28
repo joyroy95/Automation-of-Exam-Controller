@@ -1,0 +1,3 @@
+$('div#batches_data').html("<%= escape_javascript render @batches %>");
+
+history.pushState({batch_id: batch_id}, '', 'batches?batch_id=' + batch_id);

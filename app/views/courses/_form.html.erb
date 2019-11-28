@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+  <%= simple_form_for([@batch, @course], inline_errors: false ) do |f| %>
+    <%= error_messages_for @course %>
+
+    <%= f.input :code %>
+    <%= f.input :name %>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.label :course_type_id %>
+        </div>
+        <div class="col-md-7">
+          <%= f.input :course_type_id, collection: CourseType.all, label: false %>
+        </div>
+        <div class="col-md-5">
+          <%= link_to "New Course Type", new_course_type_path,
+          class: "btn btn-primary btn-block", remote: true %>
+        </div>
+      </div>
+    </div>
+    <%@term = @batch.term_type_id %>
+    <%@term = TermType.find(@term) %>
+    <%@total_terms = @term.exam_per_year * @batch.total_length_in_year%>
+
+    <%= f.input :term, collection: (1..@total_terms), label_method: :ordinalize %>
+
+    <div class="row">
+      <%= f.input :is_major, as: :boolean, label: 'Major?', wrapper_html: { class: 'col-md-6'}  %>
+      <%= f.input :is_optional, as: :boolean, label: 'Optional?', wrapper_html: { class: 'col-md-6'}  %>
+    </div>
+
+    <%= f.input :credit, as: :integer %>
+
+    <%= f.submit( 'Save Course', class: 'btn btn-success')  %>
+
+  <% end %>
+  </div>
+</div>

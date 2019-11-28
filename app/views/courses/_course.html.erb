@@ -1,0 +1,13 @@
+<tr>
+  <td><%= course.code %></td>
+  <td><%= course.name %></td>
+  <%@course_type = CourseType.find(course.course_type_id)%>
+  <td><%= @course_type.name %></td>
+  <td><%= course.term_ordinal %></td>
+  <td><%= course.credit %></td>
+  <td class="text-center">
+    <%= show_button [course.batch, course] %>
+    <%= edit_button [course.batch, course] %>
+    <%= link_to fa_icon('trash-o', text: 'Delete'), delete_batch_course_path(@batch, course), class: 'btn btn-xs btn-danger'%>
+  </td>
+</tr>

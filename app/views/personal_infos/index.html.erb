@@ -1,0 +1,61 @@
+<% @page_title = 'Student Details' %>
+
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+      <h2>Details of <%= @user.name %>
+        <%= edit_button [@user, @personal_info], class: 'pull-right', size: 'sm' %>
+      </h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>Name</td>
+      <td><%= @user.name  %></td>
+    </tr>
+    <tr>
+      <td>Father's Name</td>
+      <td><%= @personal_info.fathers_name%></td>
+    </tr>
+    <tr>
+      <td>Mother's Name</td>
+      <td><%= @personal_info.mothers_name%></td>
+    </tr>
+    <tr>
+      <td>Registration No.</td>
+      <td><%= @personal_info.users_id%></td>
+    </tr>
+    <tr>
+      <td>Department</td>
+      <td><%= @user.department %></td>
+    </tr>
+    <tr>
+      <td>Hall</td>
+      <td><%= @hall.name %></td>
+    </tr>
+    <tr>
+      <td>Session</td>
+      <td><%= @personal_info.session %></td>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <td><%= @personal_info.phone_number %></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><%= @personal_info.address%></td>
+    </tr>
+    <tr>
+      <td>Date Of Birth</td>
+      <td><%= @personal_info.date_of_birth %></td>
+    </tr>
+
+  </table>
+  </div>
+</div>

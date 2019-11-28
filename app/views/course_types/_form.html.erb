@@ -1,0 +1,5 @@
+<%= simple_form_for(@course_type, layout: :inline, inline_errors: false) do |f| %>
+  <%= error_messages_for(@course_type) %>
+    <%= f.input(:name, placeholder: 'Name', label: false, layout: :inline) %>
+    <%= f.submit "Submit", class: "btn btn-primary " %>
+<% end %>

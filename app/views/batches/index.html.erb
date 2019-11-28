@@ -1,0 +1,22 @@
+<% @page_title = 'Batches' %>
+
+<h2 class="page-header">
+  All Batches
+</h2>
+
+<div class="row">
+  <div class="col-sm-4">
+    <%= simple_form_for :query, url: batches_path, method: :get, remote: true, wrapper: :inline_form do |f| %>
+      <%= f.input :batch_id, collection: Batch.all.sorted %>
+    <% end %>
+  </div>
+  <div class="col-sm-8">
+    <%= link_to 'Add New batch', new_batch_path, class: 'btn btn-primary pull-right' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12" id="batches_data">
+    <%= render @batches %>
+  </div>
+</div>

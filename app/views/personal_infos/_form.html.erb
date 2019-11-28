@@ -1,0 +1,27 @@
+<%= horizontal_left_condensed_simple_form_for([@user, @personal_info],
+  defaults: {required: false} ) do |f| %>
+
+<%= error_messages_for(@personal_info) %>
+  <div class="col-md-6">
+    <%= f.input :fathers_name, label: "Father's Name" %>
+    <%= f.association :gender%>
+    <%=f.label :date_of_birth%>
+    <%=f.hidden_field :users_id, :value => params[:format]%>
+
+  <%= f.text_field :date_of_birth, 'data-behaviour' => 'datepicker' %>
+    <%= f.association :hall%>
+
+</div>
+
+<div class="col-md-6">
+    <%= f.input :mothers_name, label: "Mother's Name"  %>
+    <%= f.input :batches_id, collection: Batch.all.map{|e| [e.name.titleize, e.id]} %>
+    <%= f.input :phone_number%>
+    <%= f.input(:address, as: :text, size: "20x4") %>
+
+</div>
+
+<%= f.submit class: 'btn btn-success' %>
+
+<% end %>
+<%=@params%>

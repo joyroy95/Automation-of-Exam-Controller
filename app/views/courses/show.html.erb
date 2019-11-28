@@ -1,0 +1,68 @@
+<% @page_title = 'Course Details' %>
+
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+    <h2>Details of <%= @course.code %>
+
+      <span class="pull-right">
+        <%= link_to fa_icon('edit', text: 'Update'),
+        edit_batch_course_path(@batch, @course),
+        class: "btn btn-info btn-sm" %>
+
+        <%= link_to fa_icon('trash', text: 'Delete'),
+        [@batch, @course], method: :delete, data: {confirm: 'Are you sure?'},
+        class: "btn btn-danger btn-sm" %>
+      </span>
+
+    </h2>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+	<table class="table table-bordered table-striped">
+      <tr>
+			<td>Course ID</td>
+			<td><%= @course.id %></td>
+		</tr>
+		<tr>
+			<td>Batch</td>
+			<td>
+				<% if @course.batch.present? %>
+				<%= @course.batch_name.blank? ? @course.batch_id : @course.batch_name %>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td>Course Code</td>
+			<td><%= @course.code %></td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td><%= @course.name %></td>
+		</tr>
+		<tr>
+		<tr>
+			<td>Course Type</td>
+			<td><%= @course.course_type_id %></td>
+		</tr>
+		<tr>
+			<td>Credit</td>
+			<td><%= @course.credit %></td>
+		</tr>
+		<tr>
+			<td>Term</td>
+			<td><%= @course.term_ordinal %></td>
+		</tr>
+		<tr>
+			<td>Major?</td>
+			<td><%= @course.is_major.humanize %></td>
+		<tr>
+		<tr>
+			<td>Optional?</td>
+			<td><%= @course.is_optional.humanize %></td>
+		<tr>
+	</table>
+  </div>
+</div>

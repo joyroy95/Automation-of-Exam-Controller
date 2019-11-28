@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <% if logged_in? %>
+  <ol class="breadcrumb">
+    <% unless %w(login attempt_login logout).include?(params[:action]) %>
+    <%#= render_breadcrumbs separator: " &rsaquo; "  %>
+    <%= render_breadcrumbs tag: :li, separator: ""  %> <!-- bootstrap style -->
+    <% end %>
+  </ol>
+  <% end %>
+</div>

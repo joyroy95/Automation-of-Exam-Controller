@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="text-muted">
+      <strong><%= batch.name %> <%@term_type = TermType.find(batch.term_type_id)%>(<%= @term_type.name%>)</strong>
+      <span class="pull-right">
+        <%= link_to 'Details', batch_path(batch), class: 'btn btn-info btn-sm inline' %>
+        <%= link_to 'Update', edit_batch_path(batch), class: 'btn btn-primary btn-sm inline' %>
+        <%= link_to 'Delete', delete_batch_path(batch), class: 'btn btn-danger btn-sm inline'  %>
+      </span>
+    </div>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>Department: </strong> <%= batch.department_name %>
+      <span class="pull-right"><strong>Session: </strong><%= batch.session_name %></span><br />
+      <strong>Degree: </strong> <%= batch.degree_name %>
+    </li>
+    <li class="list-group-item">
+      <%= link_to batch_courses_path(batch_id: batch.id) , :class => 'btn btn-default btn-sm' do %>
+        Courses <%= content_tag :span, batch.courses_count, class: 'badge' %>
+      <% end %>
+      <%= link_to batch_submitteds_path(batch_id: batch.id) , :class => 'btn btn-default btn-sm' do %>
+        Submitted Exam Registration Forms <%= content_tag :span %>
+      <%end%>
+    </li>
+  </ul> <!-- end of ul list -->
+</div>
+<%= content_tag :br unless batch == @batches.last %>

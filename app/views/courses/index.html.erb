@@ -1,0 +1,33 @@
+<% @page_title = 'Courses' %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h2>
+	    <span>Courses <small><%= @batch.name %></small>
+        <%= form_tag batch_courses_path, method: :get, remote: true, class: "inline form-inline" do %>
+				  <%= select_tag(:term, options_for_select((1..@batch.total_terms).map(&:ordinalize), params[:term]), prompt: 'Term', class: "form-control", id: "courses_filter") %>
+        <% end %>
+				<%= link_to 'Clear Filter', {}, class: "btn btn-primary", id: "clear_filter", remote: true %>
+      </span>
+	    <%= link_to fa_icon('plus-circle', text: "New Course"), new_batch_course_path(@batch), class: 'pull-right btn btn-primary', id: 'clear_filter' %>
+    </h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="data-table course-index">
+      <thead class="header">
+    		<th data-sortable="true">Course Code</th>
+    		<th data-sortable="true">Course Name</th>
+    		<th data-sortable="true">Course Type</th>
+    		<th data-sortable="true">Term</th>
+        <th>Credit</th>
+    		<th class="filter-false sorter-false">Actions</th>
+      </thead>
+      <tbody id='course-data'>
+        <%= render @courses %>
+      </tbody>
+    </table>
+  </div>
+</div>

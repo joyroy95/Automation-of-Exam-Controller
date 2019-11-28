@@ -1,0 +1,45 @@
+<% @page_title = 'Students' %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h2>
+    <span>Students <small><%= @batch.name %></small></span>
+    </h2>
+  </div>
+</div>
+
+<%= link_to 'Add Attendance', new_batch_submitted_exam_regis_form_registration_path(@batch.id, id:@term.id), class: 'btn btn-info pull-right'%>
+
+<div id="students"> <!-- for vue wrapper -->
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th data-sortable="true">Registration</th>
+          <th data-sortable="true">Name</th>
+          <th data-sortable="true">Hall</th>
+          <th data-sortable="true">Attendance</th>
+        </tr>
+      </thead>
+    <tbody>
+      <% @registrations.each do |registration| %>
+      <tr>
+        <td><%= registration.users_id %></td>
+        <% @user = User.find(registration.users_id)%>
+        <%@personal_info = PersonalInfo.find_by(users_id: @user.id)%>
+        <td><%= @user.name %></td>
+        <% @hall = Hall.find(@personal_info.halls_id) %>
+        <td><%= @hall.name %></td>
+        <td><%=%></td>
+      </td>
+    </tr>
+      <% end%>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+</div>

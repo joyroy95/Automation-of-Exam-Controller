@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= simple_form_for @batch,
+			html: {class: 'form-horizontal form-horizontal-left form-condensed'},
+			wrapper: :horizontal_form_57,
+			defaults: {required: false} do |f| %>
+
+			<%= error_messages_for(@batch) %>
+
+			<%= f.input :degree_id, collection: Degree.all.map{ |f| [f.name, f.id]} %>
+
+			<%= f.input :department_id, collection: Department.sorted.map{|e| [e.name.titleize, e.id]} %>
+
+			<%= f.input :term_type_id, collection: TermType.all.map{|e| [e.name.titleize, e.id]} %>
+
+			<%= f.input :session, collection: (2000..2100).to_a %>
+
+			<%= f.input :total_credit %>
+
+			<%= f.input :total_length_in_year, label: "Course Length" %>
+
+			<%= f.submit class: 'btn btn-success' %>
+		<% end %>
+	</div>
+</div>

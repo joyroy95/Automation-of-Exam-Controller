@@ -1,0 +1,24 @@
+<% @page_title = 'Course Types' %>
+
+<div class="row">
+  <div class="col-sm-12 page-title">
+    <%= link_to 'Add Course Type', new_course_type_path, class: 'btn btn-primary pull-right', remote: true %>
+    <h2>All Course Types</h2>
+  </div>
+</div>
+
+<div class="modal-form">
+  <!-- dynamic form appear here -->
+</div>
+
+<div class="row">
+  <div class="col-sm-12 table-data">
+    <table class="table table-bordered table-striped">
+      <tr class="header">
+        <th>Course Type</th>
+        <th>Actions</th>
+      </tr>
+      <%= render @course_types %>
+    </table>
+  </div>
+</div>

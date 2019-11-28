@@ -1,0 +1,35 @@
+<div class="navbar navbar-inverse navbar-fixed-top" id = "main">
+  <div class="container-fluid">
+    <div class="navbar-header" >
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1" onclick="openNav()">
+        <span class="sr-only" >Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'University Of Chittagong', root_path, class: 'navbar-brand', id: "logo" %>
+      <button type="button" class="pull-right visible-xs navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-right-links" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <!-- .navbar-header -->
+    <div class="collapse navbar-collapse" id="navbar-right-links">
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li class="dropdown">
+            <%= link_to raw('<i class="fa fa-user"></i> ' +" #{session[:user_id]} " + '<span class="caret"></span> '), user_path(session[:user_id]), class: 'dropdown-toggle', data: {toggle: 'dropdown'}, role: 'button' %>
+            <ul class="dropdown-menu">
+              <li><%= link_to fa_icon('wrench', text: " Profile"), user_path(session[:user_id])%></li>
+              <li><%= link_to fa_icon('sign-out', text: " Logout"), students_logout_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to fa_icon('sign-in', text: 'Login'), sessions_new_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

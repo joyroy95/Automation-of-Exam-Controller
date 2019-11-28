@@ -1,0 +1,43 @@
+<% @page_title = 'Batch Details' %>
+
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+    <h2>Details of <%= @batch.name %></h2>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Batch Information
+      <%= link_to fa_icon("edit", text: 'Edit'), edit_batch_path(@batch), class: "pull-right btn btn-warning" %>
+    </h2>
+    <table class="table table-bordered table-striped">
+      <tr>
+        <td>Name</td>
+        <td><%= @batch.name %></td>
+      </tr>
+      <tr>
+        <td>Department</td>
+        <td><%= @batch.department_name %></td>
+      </tr>
+      <tr>
+        <td>Degree</td>
+        <td><%= @batch.degree_name %></td>
+      </tr>
+      <tr>
+        <td>Session</td>
+        <td><%= @batch.session_name %></td>
+      </tr>
+      <tr>
+        <td>Total Credits</td>
+        <td><%= @batch.total_credit %></td>
+      </tr>
+      <tr>
+        <td>Total Course Length</td>
+        <td><%= @batch.total_length_in_year %> Years</td>
+      </tr>
+    </table>
+  </div>
+</div>

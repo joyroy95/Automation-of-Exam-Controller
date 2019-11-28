@@ -1,0 +1,88 @@
+<% @page_title = 'Student Details' %>
+
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+      <h2>Details of <%= @user.name %>
+        <% if @personal_info.nil? %>
+        <%= link_to 'Complete Personal Info', new_user_personal_info_path(user_id: @user.id), class: "btn btn-primary btn-#{'xs'} " %>
+        <%end%>
+        <% if !@personal_info.nil? %>
+          <%= edit_button [@user, @personal_info], class: 'pull-right', size: 'sm' %>
+        <%end%>
+
+      </h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>Name</td>
+      <td><%= @user.name  %></td>
+    </tr>
+    <tr>
+      <td>Father's Name</td>
+      <% if !@personal_info.nil? %>
+        <td><%= @personal_info.fathers_name%></td>
+        <% end %>
+    </tr>
+    <tr>
+      <td>Mother's Name</td>
+      <% if !@personal_info.nil? %>
+      <td><%= @personal_info.mothers_name%></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>Registration No.</td>
+      <% if !@personal_info.nil? %>
+      <td><%= @personal_info.users_id%></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>Department</td>
+      <% if !@user.nil? %>
+      <% @department = Department.find(@user.departments_id)%>
+      <td><%= @department.name %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>Hall</td>
+      <% if !@personal_info.nil? %>
+      <td><%= @hall.name %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>Session</td>
+      <% if !@personal_info.nil? %>
+      <td><%= @personal_info.session %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <% if !@personal_info.nil? %>
+      <td><%= @personal_info.phone_number %></td>
+      <% end%>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <% if !@user.nil? %>
+      <td><%= @user.email %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <% if !@personal_info.nil? %>
+      <td><%= @personal_info.address%></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>Date Of Birth</td>
+      <% if !@personal_info.nil? %>
+      <td><%= @personal_info.date_of_birth %></td>
+      <% end %>
+    </tr>
+
+  </table>
+  </div>
+</div>

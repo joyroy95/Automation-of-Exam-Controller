@@ -1,0 +1,25 @@
+<% @page_title = 'Students' %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h2>
+    <span>Students <small><%= @batch.name %></small></span>
+    </h2>
+  </div>
+</div>
+
+<div id="students"> <!-- for vue wrapper -->
+
+<div class="collapse" id="quickStudentForm">
+    <student-form v-on:created="appendCreated"></student-form>
+</div>
+
+<div class="row">
+  <div >
+    <% @terms.each do |term| %>
+      <%= link_to "#{term.name} #{"  "}Semester", batch_submitted_exam_regis_form_path(@batch.id,id:term.id), class: 'btn btn-primary'%>
+    <% end%>
+  </div>
+</div>
+
+</div>

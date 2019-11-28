@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+
+		<%= simple_form_for(@admin_user, html: {class: 'form-horizontal form-condensed form-horizontal-left'},
+			defaults: {
+				required: false,
+				input_html: { class: 'input-sm' },
+			},
+			wrapper: :horizontal_form) do |f| %>
+
+		<%= error_messages_for(@admin_user) %>
+
+		<%= f.input :name  %>
+
+		<%= f.input :username %>
+
+		<%= f.input :email %>
+
+		<%= f.input :password, input_html: {autocomplete: 'new-password'} %>
+
+		<div class='form-group action-buttons'>
+			<div class="col-sm-9">
+				<%= f.submit class: 'btn btn-success' %>
+			</div>
+		</div>
+
+		<% end %>
+
+	</div>
+</div>

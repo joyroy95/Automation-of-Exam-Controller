@@ -1,0 +1,17 @@
+<%= horizontal_left_condensed_simple_form_for([@user, @registration], defaults: {required: false} ) do |f| %>
+
+<%= error_messages_for(@registration) %>
+  <div class="col-md-6">
+    <%= f.input :exam_year, collection: (2000..2100).to_a %>
+   <%= f.input :degrees_id, collection: Degree.all.map{|e| [e.name.titleize, e.id]} %>
+    <%=f.hidden_field :users_id, :value => params[:user_id]%>
+    <% @batch = PersonalInfo.find_by(users_id: params[:user_id])%>
+    <%=f.hidden_field :batches_id, :value => @batch.batches_id %>
+    <%= f.input :exam_statuses_id, collection: ExamStatus.all.map{|e| [e.name.titleize, e.id]} %>
+    <%= f.input :terms_id, collection: Term.all.map{|e| [e.name.titleize, e.id]}, label: "Which Semester Exam you want to participate"%>
+
+</div>
+
+<%= f.submit class: 'btn btn-success' %>
+
+<% end %>

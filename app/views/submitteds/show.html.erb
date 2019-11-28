@@ -1,0 +1,55 @@
+<% @page_title = 'Students' %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h2>
+    <span>Students <small><%= @batch.name %></small></span>
+    </h2>
+  </div>
+</div>
+<div id="students"> <!-- for vue wrapper -->
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th data-sortable="true">Registration</th>
+          <th data-sortable="true">Name</th>
+          <th data-sortable="true">Hall</th>
+          <th data-sortable="true">Attendance</th>
+          <th data-sortable="true">Actions</th>
+        </tr>
+      </thead>
+    <tbody>
+      <% @registrations.each do |registration| %>
+      <tr>
+        <td><%= registration.users_id %></td>
+        <% @user = User.find(registration.users_id)%>
+        <%@personal_info = PersonalInfo.find_by(users_id: @user.id)%>
+        <td><%= @user.name %></td>
+        <% @hall = Hall.find(@personal_info.halls_id) %>
+        <td><%= @hall.name %></td>
+        <%@attendance = Attendance.find_by(users_id: registration.users_id, terms_id: registration.terms_id, batches_id: registration.batches_id)%>
+        <% if !@attendance.nil?%>
+        <td><%=@attendance.atten%></td>
+        <% else %>
+        <td><%=%></td>
+        <%end%>
+        <%@attendance = Attendance.find_by(users_id: registration.users_id, terms_id: registration.terms_id, batches_id: registration.batches_id)%>
+        <%if @attendance.nil?%>
+        <td><%= link_to 'Add Attendance', new_batch_submitted_attendance_path(@batch, @term, users_id:registration.users_id), class: 'btn btn-info'%></td>
+        <%end%>
+        <%if !@attendance.nil?%>
+        <td><%= link_to 'Edit Attendance', edit_batch_submitted_attendance_path(@attendance.batches_id,@attendance.terms_id, @attendance.id, users_id:@attendance.users_id), class: 'btn btn-info'%></td>
+        <%end%>
+      </td>
+    </tr>
+      <% end%>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+</div>

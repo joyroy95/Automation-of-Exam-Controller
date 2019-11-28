@@ -1,0 +1,7 @@
+<tr>
+  <td><%= editable course_type, :name, value: course_type.titleized %></td>
+  <td>
+    <%= edit_button course_type, remote: true %>
+    <%= delete_button course_type %>
+  </td>
+</tr>
