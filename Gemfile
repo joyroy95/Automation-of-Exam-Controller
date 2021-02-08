@@ -47,7 +47,7 @@ gem 'x-editable-rails'
 gem "bootstrap-table-rails"
 gem 'simple-form-datepicker', '~> 0.1.3'
 gem "breadcrumbs_on_rails"
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave', '~> 1.3.2'
 gem 'mini_magick', '~> 4.3'
 gem 'prawn'
 # Use Redis adapter to run Action Cable in production
